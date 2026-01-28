@@ -14,11 +14,11 @@ test  <- df %>% filter(season >= 2021)
 
 # pick feature columns safely (include only those present)
 roll_cols <- df %>%
-  select(matches("(home|away)_(points_|pass_yards_|rush_yards_|to_diff_).*"), .preserve = TRUE) %>%
+  select(matches("(home|away)_(points_|pass_yards_|rush_yards_|to_diff_).*")) %>%
   select(where(is.numeric)) %>%
   colnames()
 
-opt_cols <- intersect(c("spread_close", "total_close", "is_divisional"), colnames(df))
+opt_cols <- intersect(c("spread_close", "total_close", "is_divisional"), names(df))
 
 x_cols <- c(roll_cols, opt_cols)
 
